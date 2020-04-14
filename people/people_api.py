@@ -8,11 +8,11 @@ class People:
 
     def __init__(self, base_url: str, token: str):
         """ Class Contructor """
-        self.base_url = base_url if base_url.endswith("/") else "f{base_url}/"
+        self.base_url = base_url if base_url.endswith("/") else f"{base_url}/"
         self.token = token
         self.header = {"x-api-key": self.token}
 
-    def get_people(self, login: str) -> dict:
+    def get_login_data(self, login: str) -> dict:
         """Get a data related to a person
         Returns
         -------
@@ -33,7 +33,7 @@ class People:
              'bp': 'Bp name'}
 
         """
-        url = f"{self.base_url}/prd/api/v2/people/{login}"
+        url = f"{self.base_url}prd/api/v2/people/{login}"
         content = requests.get(url, headers=self.header)
         content.raise_for_status()
         return content.json()
