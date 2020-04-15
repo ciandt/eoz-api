@@ -3,6 +3,7 @@
 *.py[co]
 .tox/
 *.vscode/
+*.coverage
 __pycache__
 MANIFEST
 dist/

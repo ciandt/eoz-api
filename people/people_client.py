@@ -13,7 +13,7 @@ class People:
         self.header = {"x-api-key": self.token}
 
     def get_login_data(self, login: str) -> dict:
-        """Get a data related to a person
+        """Get a data related to a user
         Returns
         -------
         dict
