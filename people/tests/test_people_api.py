@@ -49,5 +49,4 @@ def test_get_login_error(requests_mock, mock_data):
     pp = People(url, "AZDFDARETTK")
     requests_mock.get(f"{url}prd/api/v2/people/{login}",
                       json=mock_data, status_code=404)
-    with pytest.raises(requests.exceptions.HTTPError):
-        pp.get_login_data("test_login")
+    assert not pp.get_login_data("test_login")

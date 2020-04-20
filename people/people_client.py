@@ -34,6 +34,8 @@ class People:
 
         """
         url = f"{self.base_url}prd/api/v2/people/{login}"
-        content = requests.get(url, headers=self.header)
-        content.raise_for_status()
-        return content.json()
+        response = requests.get(url, headers=self.header)
+
+        if response.status_code == 200:
+            return response.json()
+        return {}
