@@ -4,16 +4,16 @@ Responsible to get creating people details.
 import requests
 
 
-class People:
+class PeopleClient:
 
     def __init__(self, base_url: str, token: str):
-        """ Class Contructor """
+        """ Class Constructor """
         self.base_url = base_url if base_url.endswith("/") else f"{base_url}/"
         self.token = token
         self.header = {"x-api-key": self.token}
 
     def get_login_data(self, login: str) -> dict:
-        """Get a data related to a user
+        """Get data related to a user
         Returns
         -------
         dict
@@ -38,4 +38,3 @@ class People:
 
         if response.status_code == 200:
             return response.json()
-        return {}

@@ -1,7 +1,8 @@
-""" Unit tests for people api module """
+""" Unit tests for the people client api module """
 import pytest
 import requests
-from people import People
+
+from people_client import PeopleClient
 
 
 @pytest.fixture
@@ -26,7 +27,7 @@ def test_get_login_data(requests_mock, mock_data):
     """Test for get login data"""
     url = "http://test.com/"
     login = "test_login"
-    pp = People(url, "AZDFDARETTK")
+    pp = PeopleClient(url, "AZDFDARETTK")
     requests_mock.get(f"{url}prd/api/v2/people/{login}",
                       json=mock_data)
     assert pp.get_login_data("test_login") == mock_data
@@ -36,7 +37,7 @@ def test_get_login_data_with_not_url_slash(requests_mock, mock_data):
     """Test for get login data"""
     url = "http://test.com"
     login = "test_login"
-    pp = People(url, "AZDFDARETTK")
+    pp = PeopleClient(url, "AZDFDARETTK")
     requests_mock.get(f"{url}/prd/api/v2/people/{login}",
                       json=mock_data)
     assert pp.get_login_data("test_login") == mock_data
@@ -46,7 +47,7 @@ def test_get_login_error(requests_mock, mock_data):
     """Test for get login data error"""
     url = "http://test.com/"
     login = "test_login"
-    pp = People(url, "AZDFDARETTK")
+    pp = PeopleClient(url, "AZDFDARETTK")
     requests_mock.get(f"{url}prd/api/v2/people/{login}",
                       json=mock_data, status_code=404)
     assert not pp.get_login_data("test_login")
