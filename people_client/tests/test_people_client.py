@@ -1,6 +1,5 @@
 """ Unit tests for the people client api module """
 import pytest
-import requests
 
 from people_client import PeopleClient
 
